@@ -63,7 +63,7 @@ class ImageProcessor {
         writeImageFile();
     }
 
-    public void recolorMultiThread(int numberOfThreads) {
+    public void recolorMultiThread(int numberOfThreads) throws IOException {
         ArrayList<Thread> threads = new ArrayList<>();
         int width = this.originalImage.getWidth();
         int height = this.originalImage.getHeight() / numberOfThreads;
@@ -90,6 +90,7 @@ class ImageProcessor {
             } catch (InterruptedException e) {
             }
         }
+        writeImageFile();
     }
 
     private void setRGB(int x, int y, int rgb) {
